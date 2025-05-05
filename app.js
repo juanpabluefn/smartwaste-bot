@@ -11,6 +11,52 @@ const cron = require('node-cron');
 const colonias = require('./colonias.json');      // Lista de puntos con id,nombre,lat,lon
 const horarios = require('./horarios.json');      // [{ colonia, hora }, …]
 
+// (tras const horarios = require('./horarios.json'); etc.)
+
+app.post('/whatsapp', async (req, res) => {
+  const twiml = new MessagingResponse();
+  const from = req.body.From;
+  const msg = (req.body.Body||'').trim();
+
+  // 1) Si viene ubicación
+  if (req.body.Latitude && req.body.Longitude) {
+    const lat = parseFloat(req.body.Latitude);
+    const lon = parseFloat(req.body.Longitude);
+    const resultado = findNearestColonia(lat, lon);
+
+    if (!resultado) {
+      twiml.message('❌ Estás fuera de la zona de servicio (Santiago ±1 km).');
+    } else {
+      const { nombre: colonia, distancia } = resultado;
+      // Guardar colonia en users
+      await db.collection('users').updateOne(
+        { user: from },
+        { $set: { colonia } },
+        { upsert: true }
+      );
+
+      // Buscar horario
+      const entry = horarios.find(h => h.colonia === colonia);
+      const hora = entry ? entry.hora : 'sin horario disponible';
+
+      twiml.message(
+        `📍 Ubicación asociada a *${colonia}* (a ${distancia.toFixed(2)} km).\n` +
+        `🗑️ Hoy tu camión pasará por allí a las *${hora}*.`
+      );
+    }
+  }
+  // 2) Procesar reporte
+  else if (msg.toUpperCase() === 'LLENO' || msg.toUpperCase() === '#ESCOMBRO') {
+    // ... tu lógica actual ...
+  }
+  else {
+    // ... ayuda ...
+  }
+
+  res.writeHead(200, { 'Content-Type': 'text/xml' });
+  res.end(twiml.toString());
+});
+
 // Inicializa Twilio REST client
 const twilioClient = Twilio(
   process.env.TWILIO_ACCOUNT_SID,
