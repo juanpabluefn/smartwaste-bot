@@ -1,0 +1,18 @@
+[
+  {
+    "colonia": "Calle 1",
+    "hora": "08:00"
+  },
+  {
+    "colonia": "Calle 2",
+    "hora": "08:15"
+  },
+  {
+    "colonia": "Avenida Central",
+    "hora": "08:30"
+  },
+  {
+    "colonia": "Barrio Las Flores",
+    "hora": "09:00"
+  }
+]
