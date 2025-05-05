@@ -1,18 +1,26 @@
 [
   {
-    "colonia": "Calle 1",
-    "hora": "08:00"
+    "colonia": "Parroquia de Santiago",
+    "hora": "07:01"
   },
   {
-    "colonia": "Calle 2",
-    "hora": "08:15"
+    "colonia": "Barrio de Santiago",
+    "hora": "07:06"
   },
   {
-    "colonia": "Avenida Central",
-    "hora": "08:30"
+    "colonia": "Ex-Hacienda de Santiago",
+    "hora": "07:12"
   },
   {
-    "colonia": "Barrio Las Flores",
-    "hora": "09:00"
+    "colonia": "Camino Real a Cholula",
+    "hora": "07:18"
+  },
+  {
+    "colonia": "Plaza de la Concordia",
+    "hora": "07:26"
+  },
+  {
+    "colonia": "Depósito Municipal",
+    "hora": "07:33"
   }
 ]
