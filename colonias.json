@@ -1,0 +1,8 @@
+[
+    { "id": 0, "nombre": "Depósito Municipal",      "lat": 19.0550, "lon": -98.3000 },
+    { "id": 1, "nombre": "Barrio de Santiago",       "lat": 19.0542, "lon": -98.2984 },
+    { "id": 2, "nombre": "Ex-Hacienda de Santiago",  "lat": 19.0525, "lon": -98.2995 },
+    { "id": 3, "nombre": "Camino Real a Cholula",    "lat": 19.0550, "lon": -98.3010 },
+    { "id": 4, "nombre": "Plaza de la Concordia",    "lat": 19.0530, "lon": -98.2970 },
+    { "id": 5, "nombre": "Parroquia de Santiago",    "lat": 19.0545, "lon": -98.2990 }
+  ]
